@@ -1,0 +1,138 @@
+
+.balloons {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+  
+  .balloon {
+    display: block;
+    height: 30vh;
+    opacity: 0.8;
+    position: absolute;
+    width: 20vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .balloon0 {
+    background-image: url('./albums/am.jpg');
+    left: 10%;
+    animation: flyingBalloon 9s -97s linear infinite;
+    -webkit-animation: flyingBalloon 9s -97s linear infinite;
+    -moz-animation: flyingBalloon 9s -97s linear infinite;
+    -ms-animation: flyingBalloon 9s -97s linear infinite;
+    -o-animation: flyingBalloon 9s -97s linear infinite;
+  }
+  
+  .balloon1 {
+    background-image: url('./albums/happysad.jpg');
+    left: 46%;
+    animation: flyingBalloon 21s -60s linear infinite;
+    -webkit-animation: flyingBalloon 21s -60s linear infinite;
+    -moz-animation: flyingBalloon 21s -60s linear infinite;
+    -ms-animation: flyingBalloon 21s -60s linear infinite;
+    -o-animation: flyingBalloon 21s -60s linear infinite;
+  }
+  
+  .balloon2 {
+    background-image: url('./albums/hey.jpg');
+    left: 74%;
+    animation: flyingBalloon 17s -62s linear infinite;
+    -webkit-animation: flyingBalloon 17s -62s linear infinite;
+    -moz-animation: flyingBalloon 17s -62s linear infinite;
+    -ms-animation: flyingBalloon 17s -62s linear infinite;
+    -o-animation: flyingBalloon 17s -62s linear infinite;
+  }
+  
+  .balloon3 {
+    background-image: url('./albums/ironmaiden.jpg');
+    left: 27%;
+    animation: flyingBalloon 14s -67s linear infinite;
+    -webkit-animation: flyingBalloon 14s -67s linear infinite;
+    -moz-animation: flyingBalloon 14s -67s linear infinite;
+    -ms-animation: flyingBalloon 14s -67s linear infinite;
+    -o-animation: flyingBalloon 14s -67s linear infinite;
+  }
+  
+  .balloon4 {
+    background-image: url('./albums/nil.jpg');
+    left: 33%;
+    animation: flyingBalloon 12s -80s linear infinite;
+    -webkit-animation: flyingBalloon 12s -80s linear infinite;
+    -moz-animation: flyingBalloon 12s -80s linear infinite;
+    -ms-animation: flyingBalloon 12s -80s linear infinite;
+    -o-animation: flyingBalloon 12s -80s linear infinite;
+  }
+  
+  .balloon5 {
+    background-image: url('./albums/sonfecibisiklet.jpg');
+    left: 21%;
+    animation: flyingBalloon 17s -93s linear infinite;
+    -webkit-animation: flyingBalloon 17s -93s linear infinite;
+    -moz-animation: flyingBalloon 17s -93s linear infinite;
+    -ms-animation: flyingBalloon 17s -93s linear infinite;
+    -o-animation: flyingBalloon 17s -93s linear infinite;
+  }
+  
+  .balloon6 {
+    background-image: url('./albums/theclash.jpg');
+    left: 43%;
+    animation: flyingBalloon 8s -90s linear infinite;
+    -webkit-animation: flyingBalloon 8s -90s linear infinite;
+    -moz-animation: flyingBalloon 8s -90s linear infinite;
+    -ms-animation: flyingBalloon 8s -90s linear infinite;
+    -o-animation: flyingBalloon 8s -90s linear infinite;
+  }
+  
+  .balloon7 {
+    background-image: url('./albums/tokiohotel.jpg');
+    left: 20%;
+    animation: flyingBalloon 9s -90s linear infinite;
+    -webkit-animation: flyingBalloon 9s -90s linear infinite;
+    -moz-animation: flyingBalloon 9s -90s linear infinite;
+    -ms-animation: flyingBalloon 9s -90s linear infinite;
+    -o-animation: flyingBalloon 9s -90s linear infinite;
+  }
+
+  
+  @-webkit-keyframes flyingBalloon {
+    from {
+      bottom: -20%;
+    }
+    to {
+      bottom: 110%;
+    }
+  }
+  @-moz-keyframes flyingBalloon {
+    from {
+      bottom: -20%;
+    }
+    to {
+      bottom: 110%;
+    }
+  }
+  @-ms-keyframes flyingBalloon {
+    from {
+      bottom: -20%;
+    }
+    to {
+      bottom: 110%;
+    }
+  }
+  @-o-keyframes flyingBalloon {
+    from {
+      bottom: -20%;
+    }
+    to {
+      bottom: 110%;
+    }
+  }
+  @keyframes flyingBalloon {
+    from {
+      bottom: -20%;
+    }
+    to {
+      bottom: 110%;
+    }
+  }
