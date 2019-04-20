@@ -1,3 +1,23 @@
+First you will need to setup backend folder.
+
+Backend folder is taken from --> https://github.com/mpj/oauth-bridge-template
+
+After clone the folder you will need to go to backend folder and put givin command to your shell.
+you will need to replace XXX and YYY with your spotify client id and spotify client secret.
+
+For linux v
+
+### export SPOTIFY_CLIENT_ID=XXXX
+### export SPOTIFY_CLIENT_SECRET=YYYY
+### npm start
+
+For windows v
+### set SPOTIFY_CLIENT_ID=XXXX
+### set SPOTIFY_CLIENT_SECRET=YYYY
+### npm start
+
+NOTE: windows sometimes doesn't want to set until you will restart your computer. You can check, if you set it correctly from Enviroment variables window.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
