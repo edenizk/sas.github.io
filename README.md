@@ -85,6 +85,8 @@ You can go to this link for the preview -> ​https://spotify-album-searcher.her
 
 ## 4 - Components Diagram
 
+![component diagram](https://user-images.githubusercontent.com/35309972/56473277-164d0200-6469-11e9-9384-46f4abeaf7ba.jpg)
+
 ## 5 - Development Tools
 
 ## React Sweet Progress
