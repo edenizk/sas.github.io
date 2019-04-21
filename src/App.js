@@ -97,9 +97,14 @@ class App extends Component {
               onTextChange={(text) => 
                 { this.setState({filterString: text, overlay:false})
                   this.updateAlbums(text)}}
-              onOrderChange={(order_by_value) => 
+              onOrderKeyChange={(order_key_value) => 
+                {this.setState({order_key: order_key_value})
+                this.updateAlbums(this.state.filterString)
+              }}
+              onOrderByChange={(order_by_value) => 
                {this.setState({order_by: order_by_value})
-               this.updateAlbums(this.state.filterString)}}/>
+               this.updateAlbums(this.state.filterString)
+               }}/>
             {!this.state.overlay ?
                <div className="main_content_body">
                   <div id="album_wrapper_background"></div>
