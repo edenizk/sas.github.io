@@ -12,7 +12,7 @@ class SignIn extends Component {
                 <img alt=''></img>
                 <div id='title'>S. A. S.</div>
                 <div id='note'>(Spotify Album Searcher)</div>
-                <button onClick={() => window.location = 'http://localhost:8888/login' }
+                <button onClick={() => window.location = 'https://s-a-s-backend.herokuapp.com/login' }
                 >Sign in with Spotify</button>
             </div>
             <div id="filter"></div>
