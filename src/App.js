@@ -18,7 +18,10 @@ class App extends Component {
 
     this.state = {
       serverData: {},
-      user: {avatar: default_avatar},
+      user: {
+        avatar: default_avatar,
+        name: 'No Name'
+      },
       filterString: 'rock',
       accessToken: accessToken,
       order_key: 'name',
