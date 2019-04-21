@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import '../App.css';
 
 import PopularityProgress from './PopularityProgress.js'
+import Tracks from './Tracks.js'
+import AlbumInfo from './AlbumInfo.js'
 
 class AlbumOverlay extends Component{
   constructor(){
     super()
-    this.state = {}
+    this.state = {
+      current_song_href: ''
+    }
   }
   componentDidMount() {
     this.albumHref = this.props.albumHref
@@ -16,7 +20,6 @@ class AlbumOverlay extends Component{
       headers: {'Authorization': 'Bearer ' + this.accessToken}
     }).then(response => response.json())
     .then(data => {
-     // console.log(data)
       try{
         this.setState({
           album: {
@@ -32,6 +35,7 @@ class AlbumOverlay extends Component{
                              {return {
                                duration: item.duration_ms,
                                track_name: item.name,
+                               track_href: item.external_urls.spotify,
                                preview_url: item.preview_url}})
             }
         })
@@ -42,21 +46,7 @@ class AlbumOverlay extends Component{
     })
   }
 
-  getDuration(ms){
-    var minutes = Math.floor(ms / 60000);
-    var seconds = ((ms % 60000) / 1000).toFixed(0) - 1;
-    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-  }
-
-  getTotalDuration(){
-    let totalDuration = 0
-    this.state.album.tracks.map((track) => totalDuration += track.duration)
-    console.log(this.getDuration(totalDuration))
-    return this.getDuration(totalDuration)
-  }
-
   render(){
-    console.log(this.state)
     return(
       <div id='overlay_wrapper'>
         {!this.state.album ?
@@ -66,48 +56,29 @@ class AlbumOverlay extends Component{
             <img id='album_background' src={this.state.album.image_url} alt='blured background'/>
             <div id='overlay_album_info'>
               <div id='inline_image_pop'>
-                <PopularityProgress popularity={this.state.album.popularity}/>
+                <PopularityProgress id="popularity_progress" popularity={this.state.album.popularity}/>
                 <img id='album_cover' src={this.state.album.image_url} alt='album cover'/>
                 <div id="player">
-                  <audio autoPlay='true' 
+                  {this.state.current_song_href !== '' ? 
+                    <a href={this.state.current_song_href} target='_blank' rel="noopener noreferrer">
+                      Listen This Song on Spotify
+                    </a> : <div></div>}
+                  <audio autoPlay={true} 
                     onPlay={() => this.setState({current_song_statue: 'Playing:'})}
                     onPause={() => this.setState({current_song_statue: 'Paused:'})}
                     src={this.state.current_song_src} controls></audio>
                   <div>{this.state.current_song_statue} <br></br><span>{this.state.current_song}</span></div>
                 </div>
               </div>
-              <div id='overlay_info_text'>
-                <div>
-                  <span>Album</span><br></br>
-                  <a href={this.state.album.album_url} target='_blank' rel="noopener noreferrer">
-                    {this.state.album.album_name}
-                  </a><br></br>
-                  <span>By </span>
-                  <a href={this.state.album.artist_url} target='_blank' rel="noopener noreferrer">
-                    {this.state.album.artist_name}
-                  </a><br></br>
-                  <span>Release Date: </span>{this.state.album.release_date}<br></br>
-                  <span>Total Tracks: </span>{this.state.album.total_tracks}<br></br>
-                  <span>Total Duration: </span>{this.getTotalDuration()}<span> min</span>
-                </div>
-              </div>
+              <AlbumInfo album={this.state.album}></AlbumInfo>
             </div>
-            <div id='tracks'> 
-                <ul>
-                {this.state.album.tracks.map(song =>
-                <li className='track' onClick=
-                    {() => {this.setState({
-                    current_song: song.track_name,
-                    current_song_src: song.preview_url})}}>
-                  <div id="track_name" >
-                    <img alt='album cover'></img>
-                    <div>{song.track_name}</div>
-                  </div>
-                  <div id="track_duration">{this.getDuration(song.duration)}</div>
-                </li>
-              )}
-                </ul>
-            </div>
+            <Tracks tracks={this.state.album.tracks} onTrackClick={(song, src, href) =>{ 
+                         this.setState({
+                          current_song: song,
+                          current_song_src: src,
+                          current_song_href: href
+                           }) 
+                           console.log(this.state.current_song_href)}}></Tracks>
         </div>
         }
       </div>

@@ -37,7 +37,6 @@ class OrderBy extends Component{
          style={{transform: `rotate(${this.state.rotation}deg)`}}
         onClick={() => {
           this.changeSource()
-          
           this.props.onOrderByChange(this.state.value)
         }}></img>
       )

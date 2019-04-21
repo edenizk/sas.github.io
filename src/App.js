@@ -2,21 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 import queryString from 'query-string';
 
-import Filter from './components/Filter.js'
-import AlbumCounter from './components/AlbumCounter.js'
-import User from './components/User.js'
 import Album from './components/Album.js'
-import OrderBy from './components/OrderBy.js'
-import OrderKey from './components/OrderKey.js'
 import SignIn from './components/SignIn.js'
-import AlbumOverlay from './components/AlbumOverlay';
+import AlbumOverlay from './components/AlbumOverlay.js';
+import TopBar from './components/TopBar.js';
 
 import CompareValues from './events/CompareValues.js'
 
 class App extends Component {
   constructor() {
-    super();
-    let parsed = queryString.parse(window.location.search);
+    super()
+    let parsed = queryString.parse(window.location.search)
     let accessToken = parsed.access_token;
 
     this.state = {
@@ -80,7 +76,6 @@ class App extends Component {
   changeOverlayHref(album_href){
     this.setState({overlay: true})
     this.href = album_href
-    console.log(this.overlay + this.href)
   }
 
   render() {
@@ -93,40 +88,25 @@ class App extends Component {
     if(this.state.order_by !== '')
       renderedAlbums.sort(CompareValues(this.state.order_key, this.state.order_by)) 
 
-
     return (
       <div className="App">
         {!this.state.user ? 
           <SignIn/> : 
           <div id="main_wrapper">
-            <div id='top_bar'>
-              <User user={this.state.user}/>
-              <Filter onTextChange={(text) => {
-                  this.setState({filterString: text, overlay: false})
-                  this.updateAlbums(text)
-                }}/>
-              <AlbumCounter album={renderedAlbums}/>
-              <div id='order_wrapper'>
-                <div>Order By: </div>
-                <OrderKey  onKeyChange={(value) => {
-                  this.setState({order_key: value})
-                  }}/>
-                <OrderBy onOrderByChange={(value) => {
-                  this.setState({order_by: value})
-                  if(value === '') this.updateAlbums(this.state.filterString)
-                }}/>
-              </div>
-            </div>
+            <TopBar renderedAlbums={renderedAlbums} state={this.state} 
+              onTextChange={(text) => {this.updateAlbums(text)}}/>
             {!this.state.overlay ?
-               <div id="albums_wrapper">
+               <div className="main_content_body">
+                  <div id="album_wrapper_background"></div>
                   {renderedAlbums.map(renderedAlbum =>
                     <Album album={renderedAlbum} 
                       onButtonClick={(album_href) => {
                       this.setState({overlay: true, overlay_album_href: album_href})
                     }}/>
                  )}
-               </div>  :
-              <div id="albums_wrapper">
+               </div>
+                :
+              <div className="main_content_body">
                 <div id='close_overlay_button'
                 onClick={() => {this.setState({overlay: false})}}>X</div>
                 <AlbumOverlay albumHref={this.state.overlay_album_href} accessToken={this.state.accessToken}/>
@@ -135,7 +115,7 @@ class App extends Component {
           </div> 
         }
       </div>
-    );
+    )
   }
 }
 

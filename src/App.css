@@ -11,7 +11,26 @@ html, body {
   color: '#fff';
   /* background-image: linear-gradient(#384E4E, #1C2727); */
   background-color: #404040;
-  background-attachment: fixed;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.3vw;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #FFEDCE; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #404040; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1E1E1E; 
 }
 
 .App {
@@ -193,7 +212,6 @@ html, body {
   width: 100%;
   position: relative;
   vertical-align: middle;
-  /* background-color: #223030; */
   background-color: #1E1E1E;
   border-bottom: 0.08vw white solid;
 }
@@ -208,40 +226,66 @@ html, body {
 
 #order_wrapper{
   position: absolute;
-  font-size: 1.5vh;
-  font-weight: 200;
   text-align: left;
-  width: 6vw;
-  left: 1vw;
+  width: 30%;
   bottom: 1vh;
+  left: 1vw;
+  text-align: center;
+}
+
+#order_wrapper div{
+  position: relative;
+  font-size: 2vw;
+  font-weight: 100;
+  float: left;
 }
 
 #order_key{
-  position: relative;
-  width: 80%;
+  position: relative; 
   float: left;
+  margin-left: 0.5vw;
   background-color: #1E1E1E;
   color: white;
-  font-size: 100%;
+  font-size: 2vw;
   appearance: none;
+  cursor: pointer;
   border: 0px;
   border-bottom: 0.08vw white solid;
+  transition: 0.5s ease-in;
+}
+
+#order_key:hover{
+  color: #FFEDCE;
+  border-bottom: 0.08vw #FFEDCE solid;
+  transition: 0.3s;
+}
+
+#order_key option:checked{
+  color: #1E1E1E;
+  background-color: #FFEDCE;
 }
 
 #order_by{
   position: relative;
-  float: left;
   cursor: pointer;
-  right: 0;
-  bottom: 0.1vw;
-  width: 15%;
+  float: left;
+  margin-left: 0.3vw;
+  width:2vw;
+  border-radius: 50%;
   border: 0.08vw white solid;
+  transition: 0.3s ease-in;
+}
+
+#order_by:hover{
+  border: 0.1vw #FFEDCE solid;
+  transition: 0.3s ease-in;
 }
 
 #user_wrapper{
   position: absolute;
   right: 1vw;
   height: 100%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -253,11 +297,41 @@ html, body {
 }
 
 #user_wrapper a{
-  position: relative;
+  position: absolute;
+  text-decoration: none;
+  color: #fff;
   z-index: 100;
-  height: 90%;
-  margin: 0;
-  padding: 0;
+  height: 100%;
+  right: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#tip_text {
+  visibility: hidden;
+  width: 20%;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 50%;
+  font-size: 1vw;
+  vertical-align: middle;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  bottom: 0;
+  right: 0.5vw;
+  z-index: 400;
+}
+
+#user_wrapper a:hover #tip_text{
+  visibility: visible;
+}
+
+#user_wrapper a:hover div{
+  text-decoration: underline;
 }
 
 #user_wrapper img{
@@ -276,12 +350,10 @@ html, body {
 #filter_input{
   border-radius: 10rem;
   border: 0.08vw black solid;
-  /* background-color: #2D4040; */
   background-color: #323232;
   color: white;
   font-size: 1.5vw;
   font-weight: 100;
-  top: 20%;
   padding: 0.5rem;
   height: 100%;
   width: 25%;
@@ -292,10 +364,25 @@ html, body {
   width: 30%;
 }
 
-#albums_wrapper{
+.main_content_body{
   font-size: 0; /* font-size and lline height 0 removes gaps between rows*/
   line-height: 0;
   height: 90vh;
+  transition: 0.5s ease-in;
+}
+
+#album_wrapper_background{
+  position: absolute;
+  height: 80%;
+  width: 100%;
+  background-image: url(./icons/logo.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center; 
+  background-attachment: fixed;
+  filter: blur(3vw) brightness(50%);
+  box-shadow: inset 0px 0px 50vh 0px rgba(0,0,0,1);
+  z-index: 0;
 }
 
 .album{
@@ -314,16 +401,22 @@ html, body {
 
 #album_wrapper #album_info{
   position: absolute;
-  margin-top: 2vh;
-  font-size: 1.5vh;
   width: 100%;
-  font-weight: 200;
+  height: 100%;
   visibility: hidden;
   transition: all 0.2s ease;
 }
 
 #album_wrapper:hover #album_info{
   visibility: visible;
+}
+
+#album_wrapper #album_info div{
+  overflow: auto;
+  width: 100%;
+  height: 80%;
+  font-size: 1.5vw;
+  font-weight: 200;
 }
 
 #album_wrapper #album_info span{
@@ -341,11 +434,26 @@ html, body {
 
 #album_wrapper:hover img{
   filter: brightness(30%);
-  
 }
 
 #album_wrapper button{
-  margin-top: 1vh;
+  position: relative;
+  bottom: 0;
+  border: none;
+  font-size: 2vw;
+  font-weight: 100;
+  width: 100%;
+  height: 20%;
+  font-family: roboto;
+  cursor: pointer;
+  color: white;
+  background: #1E1E1E;
+}
+
+#album_wrapper button:hover{
+  color: #1E1E1E;
+  background: #FFEDCE;
+  transition: 0.5s;
 }
 
 #close_overlay_button{
@@ -374,11 +482,11 @@ html, body {
   width: 100%;
   height: 100%;
   line-height: normal;
+  text-align: center;
 }
 
 #overlay_loading{
   position: 'relative';
-  float:left;
   top: 50%;
   font-size: 3vw;
 }
@@ -398,7 +506,6 @@ html, body {
   height: 90vh;
   text-align: center;
   float: right;
-
 }
 
 #inline_image_pop{
@@ -415,7 +522,7 @@ html, body {
   height: 40vh;
   width: 20vw;
 }
-
+/*Popularity Progress*/
 #pop_progress{
   position: relative;
   top: 2vh;
@@ -424,14 +531,32 @@ html, body {
   width: 100%;
 }
 
+#popularity_percent{
+  visibility: hidden;
+}
+
+#pop_progress:hover #popularity_percent{
+  visibility: visible;
+}
 /*player*/
 
 #player{
   position: relative;
-  font-size: 20px;
   top: 8vh;
   margin-top: 5vh;
   height: 5vh;
+}
+
+#player a{
+  position: relative;
+  font-size: 1.5vw;
+  color: #1DB954;
+  text-decoration: nona;
+}
+
+#player a:hover{
+  color: white;
+  transition: 0.3s;
 }
 
 #player audio{
@@ -470,12 +595,13 @@ html, body {
 }
 
 #overlay_info_text a{
-  text-decoration: none;
+  text-decoration: underline;
   color: white;
 }
 
 #overlay_info_text a:hover{
   text-decoration: underline;
+  color: #1DB954;
 }
 
 /*track*/
@@ -489,10 +615,12 @@ html, body {
   text-align: left;
   font-weight: 200;
 }
+
 #tracks ul{
   position: relative;
-  top: 5vh;
+  top: 4vh;
 }
+
 #tracks li{
   position: relative;
   list-style-type: none;
@@ -506,28 +634,25 @@ html, body {
 }
 
 .track:hover{
-  background: gray;
+  color: #FFEDCE;
+  border-color: #FFEDCE;
+  transition: 0.2s ease-in;
 }
 
-#track_name img{
-  content: url(./icons/arrow.svg);
-  display: inline-block;
+#track_name{
   float: left;
-  height: 100%;
-  width: 5%;
-}
-
-#track_name div{
-  display: inline-block;
-  float: left;
-  font-size-adjust: 1vw;
+  margin-right: 1vw;
 }
 
 #track_duration{
-  position: relative;
   right: 1vw;
-  margin-top: 1vh;
   float: right;
+}
+
+#tracks_title{
+  position: relative;
+  margin-left: 1vw;
+  top: 1vh;
 }
 
 

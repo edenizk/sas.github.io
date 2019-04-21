@@ -43,6 +43,7 @@ class PopularityProgress extends Component{
                     }
                   }}
                   />
+                <div id="popularity_percent">{this.props.popularity}%</div>
             </div>
         )
     }

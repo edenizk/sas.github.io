@@ -7,9 +7,10 @@ class User extends Component{
   
       return(
           <div id="user_wrapper">
-            <div>{user.name}</div>
             <a href={user.href} target='_blank' rel="noopener noreferrer">
+              <div>{user.name}</div>
               <img src={user.avatar} alt="user avatar"></img>
+              <span id='tip_text'>Go To Profile</span>
             </a>
           </div>
       )
