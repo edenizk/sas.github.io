@@ -459,8 +459,8 @@ html, body {
 #close_overlay_button{
   position: absolute;
   line-height: normal;
-  right: 1vw;
-  top: 11vh;
+  right: 3vw;
+  top: 12vh;
   z-index: 500;
   color: #818181;
   cursor: pointer;
@@ -618,7 +618,7 @@ html, body {
 
 #tracks ul{
   position: relative;
-  top: 4vh;
+  top: 0;
 }
 
 #tracks li{
@@ -654,5 +654,74 @@ html, body {
   margin-left: 1vw;
   top: 1vh;
 }
+
+@media (orientation: portrait) 
+{
+  #overlay_album_info{
+    width: 100%;
+    height: 40vh;
+    float: left;
+  }
+
+  #inline_image_pop{
+    width: 85%;
+    height: 40vh;
+    left: 8%;
+    float: left;
+  }
+
+  #album_cover{
+    position: absolute;
+    left: 1vw;
+    height: 25vh;
+    width: 25vw;
+  }
+
+  #pop_progress{
+    top: 1vh;
+    font-size: 1vh;
+  }
+
+  #player{
+    position: relative;
+    top: 22vh;
+    height: 5vh;
+  }
+
+  #player a{
+    font-size: 1.5vh;
+  }
+
+  #player div{
+    font-size: 1.5vh;
+  }
+
+  
+#overlay_info_text{
+  position: absolute;
+  width: 50%;
+  right: 5vw;
+  top: 5vh;
+  height: 25vh;
+  font-size: 3vh;
+}
+
+#overlay_info_text span{
+  font-size: 2vh;
+  font-weight: 200;
+}
+
+#overlay_info_text div{
+  top: 0vh;
+}
+
+#tracks{
+  width: 100%;
+  height: 50vh;
+  font-size: 2vh;
+}
+
+}
+
 
 
