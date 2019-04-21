@@ -15,6 +15,12 @@ class TopBar extends Component{
 
       return(
         <div id='top_bar'>
+        <button id="sign_out" onClick={() => {
+                    window.location = window.location.href.includes('localhost') ?
+                     'https://localhost:3000' :
+                     'https://spotify-album-searcher.herokuapp.com' 
+                }}
+                >Sign Out</button>
         <User user={state.user}/>  
         <Filter onTextChange={(text) => {
             state = {filterString: text, overlay: false}
