@@ -14,14 +14,10 @@ class App extends Component {
     super()
     let parsed = queryString.parse(window.location.search)
     let accessToken = parsed.access_token;
-    let default_avatar = require('./icons/avatar.svg')
+    //let default_avatar = require('./icons/avatar.svg')
 
     this.state = {
       serverData: {},
-      user: {
-        avatar: default_avatar,
-        name: 'No Name'
-      },
       filterString: 'rock',
       accessToken: accessToken,
       order_key: 'name',
