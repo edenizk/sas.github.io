@@ -47,7 +47,7 @@ class App extends Component {
       }
     })
     
-    //this.updateAlbums('rock');
+    this.updateAlbums('rock');
   }
 
   updateAlbums(text){
