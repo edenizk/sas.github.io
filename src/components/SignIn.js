@@ -13,7 +13,9 @@ class SignIn extends Component {
                 <div id='title'>S. A. S.</div>
                 <div id='note'>(Spotify Album Searcher)</div>
                 <button onClick={() => {
-                    window.location = window.location.includes('localhost') ? 'https://localhost:8888/login' : 'https://s-a-s-backend.herokuapp.com/login' 
+                    window.location = window.location.href.includes('localhost') ?
+                     'https://localhost:8888/login' :
+                     'https://s-a-s-backend.herokuapp.com/login' 
                 }}
                 >Sign in with Spotify</button>
             </div>
