@@ -221,6 +221,17 @@ html, body {
   z-index: 1000;
   left: 1vw;
   top: 1vh;
+  border-radius: 5px;
+  font-family: roboto;
+  cursor: pointer;
+  color: white;
+  background: #1E1E1E;
+}
+
+#sign_out:hover{
+  background: #FFEDCE;
+  color: #1E1E1E;
+  transition: 0.8s;
 }
 
 .counter{
