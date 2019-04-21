@@ -1,5 +1,3 @@
-I am sorry for the Read me I will fix it soon
-
 21st April 2019
 
 S.A.S.
