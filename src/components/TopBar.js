@@ -27,10 +27,11 @@ class TopBar extends Component{
               <div>Order By: </div>
               <OrderKey onKeyChange={(value) => {
                 state = ({order_key: value})
+                this.props.onOrderKeyChange(value)
                 }}/>
               <OrderBy onOrderByChange={(value) => {
                 state = ({order_by: value})
-               if(state.filterString !== '') this.props.onOrderChange(value)
+               if(state.filterString !== '') this.props.onOrderByChange(value)
               }}/>
             </div>
          </div>
