@@ -216,6 +216,13 @@ html, body {
   border-bottom: 0.08vw white solid;
 }
 
+#sign_out{
+  position: absolute;
+  z-index: 1000;
+  left: 1vw;
+  top: 1vh;
+}
+
 .counter{
   position: absolute;
   font-size: 1.5vh;
