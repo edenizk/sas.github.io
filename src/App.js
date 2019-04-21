@@ -14,7 +14,6 @@ class App extends Component {
     super()
     let parsed = queryString.parse(window.location.search)
     let accessToken = parsed.access_token;
-    //let default_avatar = require('./icons/avatar.svg')
 
     this.state = {
       serverData: {},
@@ -23,20 +22,23 @@ class App extends Component {
       order_key: 'name',
       order_by: '',
       overlay: false,
-      overlay_album: ''
+      overlay_album: '',
     }
   }
 
   componentDidMount() {
+    let default_avatar = require('./icons/avatar.png')
+
     fetch('https://api.spotify.com/v1/me', {
       headers: {'Authorization': 'Bearer ' + this.state.accessToken}
     }).then(response => response.json())
     .then(data => {
+      console.log(data)
       try{
         this.setState({
         user: {
           name: data.display_name,
-          avatar: data.images[0].url,
+          avatar: data.images.length == 0 ? default_avatar : data.images[0].url,
           href: data.external_urls.spotify
         }})
       }
@@ -44,7 +46,7 @@ class App extends Component {
         console.log(e)
       }
     })
-
+    
     //this.updateAlbums('rock');
   }
 
