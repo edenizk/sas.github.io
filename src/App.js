@@ -94,7 +94,12 @@ class App extends Component {
           <SignIn/> : 
           <div id="main_wrapper">
             <TopBar renderedAlbums={renderedAlbums} state={this.state} 
-              onTextChange={(text) => {this.updateAlbums(text)}}/>
+              onTextChange={(text) => 
+                { this.setState({filterString: text, overlay:false})
+                  this.updateAlbums(text)}}
+              onOrderChange={(order_by_value) => 
+               {this.setState({order_by: order_by_value})
+               this.updateAlbums(this.state.filterString)}}/>
             {!this.state.overlay ?
                <div className="main_content_body">
                   <div id="album_wrapper_background"></div>
